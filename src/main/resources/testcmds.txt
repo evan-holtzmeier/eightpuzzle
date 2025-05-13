@@ -1,0 +1,109 @@
+# Test Case File for EightPuzzle Implementation
+
+# Test initial state
+printState
+# Expected Output:
+# 0 1 2
+# 3 4 5
+# 6 7 8
+
+# Test setting a valid state
+setState 1 2 3 4 5 6 7 8 0
+printState
+# Expected Output:
+# 1 2 3
+# 4 5 6
+# 7 8 0
+
+# Test setting an invalid state (contains duplicate values)
+setState 1 1 2 3 4 5 6 7 8
+# Expected Output:
+# Error: invalid puzzle state
+
+# Test setting an invalid state (contains out-of-bound values)
+setState 1 2 3 4 5 9 7 8 0
+# Expected Output:
+# Error: invalid puzzle state
+
+# Test moving tiles
+setState 1 2 3 4 5 6 7 8 0
+move left
+printState
+# Expected Output:
+# 1 2 3
+# 4 5 6
+# 0 7 8
+
+move up
+printState
+# Expected Output:
+# 1 2 3
+# 0 4 6
+# 7 8 5
+
+# Test invalid moves
+move up
+# Expected Output:
+# Error: Invalid move
+
+move right
+# Expected Output:
+# Error: Invalid move
+
+# Test scrambling state
+scrambleState 10
+printState
+# Expected Output: (randomized, so output may vary)
+
+# Test DFS with a reasonable maxnodes value
+solveDFS 100
+# Expected Output:
+# Nodes created during search: (number of nodes created)
+# Solution length: (length of solution)
+# move (direction)
+# ...
+
+# Test BFS with a reasonable maxnodes value
+solveBFS 100
+# Expected Output:
+# Nodes created during search: (number of nodes created)
+# Solution length: (length of solution)
+# move (direction)
+# ...
+
+# Test A* with heuristic h1 (misplaced tiles) and maxnodes value
+solveAStar h1 100
+# Expected Output:
+# Nodes created during search: (number of nodes created)
+# Solution length: (length of solution)
+# move (direction)
+# ...
+
+# Test A* with heuristic h2 (Manhattan distance) and maxnodes value
+solveAStar h2 100
+# Expected Output:
+# Nodes created during search: (number of nodes created)
+# Solution length: (length of solution)
+# move (direction)
+# ...
+
+# Test solve with invalid method
+solve invalidMethod
+# Expected Output:
+# Error: invalid search method: invalidMethod
+
+# Test solve with missing method argument
+solve
+# Expected Output:
+# Error: invalid command: solve
+
+# Test comments
+# This is a comment
+printState
+# Expected Output:
+# (state after previous commands)
+
+# Test invalid command format
+invalidCommand
+# Expected Output:
+# Error: invalid command: invalidCommand
